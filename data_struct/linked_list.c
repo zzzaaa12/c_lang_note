@@ -7,7 +7,7 @@ struct mylist {
 } MY_LIST;
 
 /* add a item after last node */
-int mylist_add (struct mylist *list, int id, char *str, int str_len)
+int mylist_add(struct mylist *list, int id, char *str, int str_len)
 {
 	int ret = -1;
 	struct mylist *ptr = list;
