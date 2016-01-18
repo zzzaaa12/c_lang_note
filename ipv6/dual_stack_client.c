@@ -5,22 +5,22 @@ Reference:
 	3. http://owend.corp.he.net/ipv6/sample_application/c/v6_client.c
 
 struct hostent {
-    char  *h_name;            // official name of host
-    char  **h_aliases;        // alias list
-    int   h_addrtype;         // host address type
-    int   h_length;           // length of address
-    char  **h_addr_list;      // list of addresses
+	char  *h_name;            // official name of host
+	char  **h_aliases;        // alias list
+	int   h_addrtype;         // host address type
+	int   h_length;           // length of address
+	char  **h_addr_list;      // list of addresses
 };
 
 struct addrinfo {
-    int              ai_flags;        // customize behavior
-    int              ai_family;       // address family
-    int              ai_socktype;     // socket type
-    int              ai_protocol;     // protocol
-    socklen_t        ai_addrlen;      // length in bytes of address
-    struct sockaddr *ai_addr;         // address
-    char            *ai_canonname;    // canonical name of host
-    struct addrinfo *ai_next;         // next in list
+	int              ai_flags;        // customize behavior
+	int              ai_family;       // address family
+	int              ai_socktype;     // socket type
+	int              ai_protocol;     // protocol
+	socklen_t        ai_addrlen;      // length in bytes of address
+	struct sockaddr *ai_addr;         // address
+	char            *ai_canonname;    // canonical name of host
+	struct addrinfo *ai_next;         // next in list
 };
 */
 
@@ -33,7 +33,8 @@ struct addrinfo {
 #include <sys/types.h>
 #include <sys/socket.h>
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 	int sock = -1;
 	int ret = -1;
 	char buffer[1024] = {};

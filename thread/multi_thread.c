@@ -9,12 +9,12 @@ Reference:
 #include <stdio.h>
 #include <pthread.h>
 
-void* thread0(void*);
-void* thread1(void*);
+void *thread0(void *);
+void *thread1(void *);
 
 int main(void) {
 
-	void* result;
+	void *result;
 	pthread_t t0; 
 	pthread_t t1; 
 
@@ -28,10 +28,10 @@ int main(void) {
 	return 0;
 }
 
-void* thread0(void *argu)
+void *thread0(void *argu)
 {
-	int i = 0;
-	for (; i<5; i++) {
+	int i;
+	for (i = 0; i < 5; i++) {
 		printf("thread0: %d\n", i); 
 		sleep(1);
 	}   
@@ -39,10 +39,10 @@ void* thread0(void *argu)
 }
 
 
-void* thread1(void *argu)
+void *thread1(void *argu)
 {
-	int i = 0;
-	for (; i<10; i++) {
+	int i;
+	for (i = 0; i < 10; i++) {
 		printf("thread1: %d\n", i); 
 		sleep(1);
 	}   
