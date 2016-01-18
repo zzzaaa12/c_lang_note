@@ -2,12 +2,12 @@
 /* The first node has no data, just save the next pointer */
 struct mylist {
 	int id;
-	char *str;
+	char *data;
 	struct mylist *next;
 } MY_LIST;
 
 /* add a item after last node */
-int mylist_add(struct mylist *list, int id, char *str, int str_len)
+int mylist_add(struct mylist *list, int id, char *data, int data_len)
 {
 	int ret = -1;
 	struct mylist *ptr = list;
@@ -23,28 +23,28 @@ int mylist_add(struct mylist *list, int id, char *str, int str_len)
 		goto out;
 
 	ptr->next->id = id;
-	ptr->next->str = malloc(str_len + 1);
+	ptr->next->data = malloc(data_len + 1);
 	ptr->next->next = NULL;
 
-	if (ptr->next->str == NULL) {
-		cprintf("malloc fail: ptr->next->str\n");
+	if (ptr->next->data == NULL) {
+		cprintf("malloc fail: ptr->next->data\n");
 		free(ptr->next);
 		ptr->next = NULL;
 		goto out;
 	}
 
 
-	memset(ptr->next->str, 0, str_len);
-	strncpy(ptr->next->str, str, str_len + 1);
+	memset(ptr->next->data, 0, data_len);
+	strncpy(ptr->next->data, data, data_len + 1);
 	ret = 0;
 out:
 	return ret;
 }
 
-/* read string in node by id */
+/* read data in node by id */
 char *mylist_read(struct mylist *list, int id)
 {
-	char *str = NULL;
+	char *data = NULL;
 	struct mylist *ptr = list;
 
 	if (ptr == NULL)
@@ -52,14 +52,14 @@ char *mylist_read(struct mylist *list, int id)
 
 	while (ptr->next) {
 		if (ptr->next->id == id) {
-			str = strdup(ptr->next->str);
+			data = strdup(ptr->next->data);
 			break;
 		}
 		ptr = ptr->next;
 	}
 
 out:
-	return str;
+	return data;
 }
 
 /* remove a node by id */
@@ -75,7 +75,7 @@ static int mylist_del(struct mylist *list, int id)
 	while (ptr->next) {
 		if (ptr->next->id == id) {
 			tmp = ptr->next->next;
-			free(ptr->next->str);
+			free(ptr->next->data);
 			free(ptr->next);
 			ptr->next = tmp;
 			ret = 0;
@@ -99,7 +99,7 @@ int mylist_clean(struct mylist *list)
 
 	ptr = list->next;
 	while (ptr) {
-		free(ptr->str);
+		free(ptr->data);
 		tmp = ptr->next;
 		free(ptr);
 		ptr = tmp;
