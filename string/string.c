@@ -28,17 +28,14 @@ char *str_replace(char *str, const char *old, const char *new)
 		ptr++;
 	}
 
-	new_str = malloc(len + (len_new-len_old) * count + 1);
+	new_str = malloc(len + (len_new - len_old) * count + 1);
 	if (new_str == NULL)
 		return NULL;
 
-	memset(new_str, 0, len + (len_new-len_old) * count + 1);
-
+	memset(new_str, 0, len + (len_new - len_old) * count + 1);
 	ptr = strstr(str, old);
-
 	if (ptr != str)
 		strncat(new_str, str, ptr - str);
-
 
 	while (ptr) {
 		strncat(new_str, new, len_new); // copy new string
@@ -48,7 +45,7 @@ char *str_replace(char *str, const char *old, const char *new)
 			break;
 		}
 
-		strncat(new_str, ptr+len_old, next - (ptr+len_old));
+		strncat(new_str, ptr + len_old, next - (ptr + len_old));
 		ptr = next;
 	}
 
@@ -99,10 +96,18 @@ int strstr_count(const char *str, const char *find)
 int main(void)
 {
 	char aa[] = "xxxxx11xxxxx11aaaaa112";
+	char *test;
+
 	printf("%d\n", strstr_count("123456123456312313143425346123456", "123"));
 	printf("%d\n", strchr_count("aaa12345612345a6312a31314a34253461a23456a", 'a'));
+
 	printf("old=%s\n", aa);
-	printf("new=%s\n", str_replace(aa, "11", "!!!!!!!!!!!!!!!"));
+	test = str_replace(aa, "11", "!!!!!!!!!!!!!!!");
+	if (test) {
+		printf("new=%s\n", test);
+		free(test);
+	}
+
 	return 0;
 }
 
