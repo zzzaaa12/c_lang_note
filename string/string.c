@@ -49,7 +49,7 @@ char *str_replace(char *str, const char *old, const char *new)
 		/* copy new string to replace old string */
 		strncpy(pos, new, len_new); // copy new string
 		pos = pos + len_new;
-		next = strstr(ptr + 1, old);
+		next = strstr(ptr + len_old, old);
 
 		/* copy last string */
 		if (next == NULL) {
