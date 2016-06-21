@@ -2,6 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+strchr_replace_once(char *input, char old, char new)
+{
+	char *target = strchr(input, old);
+	if (target)
+		*target = new;
+}
+
+
+
 /*
 str_replace(): replace a old string by new string
 	XXX: the return value need call free()!!
