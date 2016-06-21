@@ -9,8 +9,6 @@ strchr_replace_once(char *input, char old, char new)
 		*target = new;
 }
 
-
-
 /*
 str_replace(): replace a old string by new string
 	XXX: the return value need call free()!!
